@@ -190,3 +190,8 @@ function startUpReport(){
     document.getElementById("persistence-b").textContent = `${outlier.chosenStats.get("persistence")}`;
     document.getElementById("social-b").textContent = `${outlier.chosenStats.get("social")}`;
 }
+
+function resetReport(){
+    window.sessionStorage.removeItem("outlier");
+    window.location.replace("/");
+}
