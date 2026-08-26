@@ -8,7 +8,7 @@ const years = [
     {
         year: 1955,
         fieldBuffs: {technology: 5, industry: 3, legal: 2, music: 2, science: 2 },
-        blurb: "Someone born in 1955 was in college or leaving college during the technological revoltion, with such innovations as the internet and personal<br> computers being made. Being in a technological field was thus advantage for someone born in 1955."
+        blurb: "Someone born in 1955 was in college or leaving college during the technological revolution, with such innovations as the internet and personal<br> computers being made. Being in a technological field was thus an advantage for someone born in 1955."
     },
     {
         year: 1940,
