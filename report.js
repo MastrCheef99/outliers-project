@@ -189,6 +189,9 @@ function startUpReport(){
     document.getElementById("discipline-b").textContent = `${outlier.chosenStats.get("discipline")}`;
     document.getElementById("persistence-b").textContent = `${outlier.chosenStats.get("persistence")}`;
     document.getElementById("social-b").textContent = `${outlier.chosenStats.get("social")}`;
+    document.getElementById("circumstance-score-b").textContent = `${results.circumstanceComponent*20}`;
+    document.getElementById("personal-score-b").textContent = `${results.personalComponent*10}`;
+    document.getElementById("field-score-b").textContent = `${results.fieldScore}`;
 }
 
 function resetReport(){
