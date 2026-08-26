@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="index.js"></script>
+        <link rel="preload" href="assets/die-rolling.gif" as="image">
+    </head>
+    <body>
+        <nav>
+            <div class="link-box">
+                <a href="/">Create an Outlier</a>
+            </div>
+            <div class="link-box">
+                <a href="/chosenStats.html">Historical Outliers</a>
+            </div>
+        </nav>
+        <div>
+            <h1>Stat Rolling</h1>
+            <p>Your Outlier is about to be born.<br />Please roll the dice on this page to find out your Outlier's starting situation.</p>
+        </div>
+        <div class="page">
+            <div class="silhouette-panel">
+                <img class="silhouette" src="assets/silhouette.jpg" alt="Silhouette" />
+            </div>
+
+            <div class="controls-panel">
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Birth Month</p>
+                    </div>
+                    <div class="text-bar">
+                        <p id="month-label" class="bar-label-text"></p>
+                    </div>
+                    <img class="die" id="die-month" src="assets/die.png" alt="Die" onclick="rollBirthMonth()" />
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Birth Year</p>
+                    </div>
+                    <div class="text-bar">
+                        <p id="year-label" class="bar-label-text"></p>
+                    </div>
+                    <img class="die" id="die-year" src="assets/die.png" alt="Die" onclick="rollBirthYear()" />
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Family Class</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-family-class"></div>
+                    </div>
+                    <img class="die" id="die-family-class" src="assets/die.png" alt="Die" onclick="rollStats('family-class')" />
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Technological Access</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-tech-access"></div>
+                    </div>
+                    <img class="die" id="die-tech-access" src="assets/die.png" alt="Die" onclick="rollStats('tech-access')" />
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Cultural Background</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-cultural-background"></div>
+                    </div>
+                    <img class="die" id="die-cultural-background" src="assets/die.png" alt="Die" onclick="rollStats('cultural-background')" />
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Education</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-education"></div>
+                    </div>
+                    <img class="die" id="die-education" src="assets/die.png" alt="Die" onclick="rollStats('education')" />
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">IQ</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-iq"></div>
+                    </div>
+                    <img class="die" id="die-iq" src="assets/die.png" alt="Die" onclick="rollStats('iq')" />
+                </div>
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Luck</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-luck"></div>
+                    </div>
+                    <img class="die" id="die-luck" src="assets/die.png" alt="Die" onclick="rollStats('luck')" />
+                </div>
+                <button onclick="rollAllStats()">Roll All</button>
+                <button onclick="saveCurrentOutlier('/chosenStats.html')">Next</button>
+            </div>
+        </div>
+    </body>
+</html>

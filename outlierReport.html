@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="index.js"></script>
+        <script src="report.js"></script>
+        <script>
+            window.addEventListener("DOMContentLoaded", () => {
+                startUpReport();
+            });
+        </script>
+        <script>
+            readOutlierFromSessionStorage();
+            if (outlier.birthYear == null && outlier.randomStats.size < 7){
+                window.alert("No valid outlier found! Hit OK to redirect and roll base stats.");
+                window.location.replace("/");
+            }
+        </script>
+        <link rel="preload" href="assets/die-rolling.gif" as="image">
+    </head>
+    <body>
+        <nav>
+            <div class="link-box">
+                <a href="/">Create an Outlier</a>
+            </div>
+            <div class="link-box">
+                <a href="/chosenStats.html">Historical Outliers</a>
+            </div>
+        </nav>
+        <div>
+            <h1>Outlier Report</h1>
+            <p>Your Outlier's success score is <b id="success-score-p"></b>.</p>
+            <p>Success score analyzes your Outlier's chance of succeeding given how their life is set up.<br>It is not a guaruntee of success or failure, and is merely a statistical estimate based on principles outlined in <i>Outliers</i></p>
+            <p>Your outlier fits into the <b id="class-b"></b> class.</p>
+            <p id="class-blurb"></p>
+            <hr/>
+            <h2>Breakdown</h2>
+            <p>The elements of success were broadly split into 3 categories: background circumstances of one's life, circumstances<br> related to ones field of work, and personal skills and traits.</p>
+            <h3>Background Circumstances</h3>
+            <p>The background circumstances of your outlier's life have a large effect on their future success.<br>These statistics all come from random chance of how one is born and randomly receive opportunities. These include:<br>
+            Family Class: <b id="family-class-b"></b><br>
+            Technological Access: <b id="technological-access-b"></b><br>
+            Cultural Background: <b id="cultural-background"></b><br>
+            Education: <b id="education-b"></b><br>
+            IQ: <b id="iq-b"></b><br>
+            Luck: <b id="luck-b"></b><br>
+            </p>
+            <p style="text-align: left; margin-left: 20px; margin-right: 20px;">
+            Each is explained below with how it relates to success according to Gladwell and my own analysis:<br>
+            The class of one's family matters because higher class parents are more likely to raise their children in an active and more conducive to learning and creating opportunities. (Per chapter 4.3)
+            Access to technology allows for broader learning and more opportunities in technologically dominated jobs.
+            This simulation is too narrow in scope to represent nuanced arguments made by Gladwell on cultural background. However, Gladwell explains in Outliers
+            an example of how pilots are affected by cultural power dynamics (Chapter 7), how Asian cultural environments are conducive to math learning (Chapter 8)
+            and how Jewish cultural environments in the 20th century allowed for Jewish people's success in legal and clothesmaking jobs (Chapter 5)
+            This number simply represents those concepts as how well your outlier's cultural environment is conducive to success.
+            Having a higher level of education generally produces more Outliers because of the skills learned and connections made.
+            Gladwell spent Chapters 3 and 4 of the book discussing IQ. According to Gladwell, a certain IQ threshold needs to be met
+            for most people to be successful, but past a certain point, it doesn't really matter, and this is reflected in how the success score is calculated
+            Sometimes, simple dumb luck determines certain opportunities that allow for success. For an example in Outliers, Chapter 2 contains the story of Bill Joy
+            Bill Joy got lucky in several ways by choosing the right university (university of Michigan) that happened to have a computer system that let him practice programming for as much time
+            as he wanted. Joy didn't plan to be a programmer and chose the university because of that, he simply got lucky that they did.
+            </p>
+            <h3>Personal Skills</h3>
+            <p>The skills your outlier chose to invest in are listed here:<br>
+            Creativity: <b id="creativity-b"></b><br>
+            Discipline: <b id="discipline-b"></b><br>
+            Persistence: <b id="persistence-b"></b><br>
+            Social Skills: <b id="social-b"></b><br>
+            </p>
+            <p style="text-align: left; margin-left: 20px; margin-right: 20px;">
+            These 4 factors are just generally useful for someone trying to become successful. Creativity is applicable
+            across many fields, discipline is required in order to put in the hard work required to become successful
+            persistence is required so one keeps working at something so they can because successful in it and social
+            skills are useful for making industry connections and gaining opportunities.
+            </p>
+            <h3>Field of Work</h3>
+            <p>
+            The birth year chosen was <b id="birth-year-b"></b>. <foo id="birth-year-blurb"></foo><br>
+            Technology: <b id="technology-b"></b><br>
+            Industry: <b id="industry-b"></b><br>
+            Legal: <b id="legal-b"></b><br>
+            Music: <b id="music-b"></b><br>
+            Science: <b id="science-b"></b><br>
+            </p>
+            <p style="text-align: left; margin-left: 20px; margin-right: 20px;">
+            In order to become successful, past outliers have taken advantage of the time they exist in. Bill Gates and Bill Joy took advantage of the technological revolution. They were already skilled in programming, so they were able to contribute to the wave of changes and become successful (per Chapter 2). The Beatles took advantage of the music scene, including one that favored artists in the "British Invasion". Thus, the success score calculation took the field your Outlier had time invested in and which fields were doing well during their time into heavy account to determine how well your outlier would do given their field.
+            </p>
+            <h3>The Athlete Calculus: Birth and Skill</h3>
+            <p>
+                Birth Month: <b id="birth-month-b"></b><br>
+                Athleticism: <b id="athleticism-b"></b><br>
+            </p>
+            <p style="text-align: left; margin-left: 20px; margin-right: 20px;">
+            In chapter 1 of Outliers, Gladwell discusses how birth months, specifically being born right after the cutoff for a league in a certain sport, could lead to advantages or disadvantages in sports. For athelete outliers, the success score takes into account if they were born near the common cutoff months of January and August and give them extra score if they are.
+            </p>
+            <h3>Conclusion</h3>
+            <p>Overall, the past simulation and the final success score provide an abstracted view of how success comes about. Vast concepts are reduced to mere numbers, but in totality this game<br> serves as a useful tool for explaining key concepts in Outliers by Malcom Gladwell.</p>
+        </div>
+        <div class="page">
+        </div>
+    </body>
+</html>

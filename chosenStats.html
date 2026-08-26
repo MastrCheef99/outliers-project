@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="index.js"></script>
+        <script>
+            readOutlierFromSessionStorage();
+            if (outlier.birthYear == null && outlier.randomStats.size < 7){
+                window.alert("No valid outlier found! Hit OK to redirect and roll base stats.");
+                window.location.replace("/");
+            }
+            calculateSkillPoints();
+        </script>
+        <link rel="preload" href="assets/die-rolling.gif" as="image">
+    </head>
+    <body>
+        <nav>
+            <div class="link-box">
+                <a href="/">Create an Outlier</a>
+            </div>
+            <div class="link-box">
+                <a href="/chosenStats.html">Historical Outliers</a>
+            </div>
+        </nav>
+        <div>
+            <h1>Manual Stat Allocation</h1>
+            <p>Your Outlier is born!<br>In what field will they apply themselves?<br>What abstract skills will they develop?<br>Allocate 20 skill points across the options below to decide.</p>
+        </div>
+        <h1 id = "skill-points-remaining-header">SKILL POINTS REMAINING: 10</h1>
+        <div class="page">
+            <div class="controls-panel">
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Technology</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('technology')">-</button>
+                    <p id="technology-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('technology')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Industry</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('industry')">-</button>
+                    <p id="industry-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('industry')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Legal</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('legal')">-</button>
+                    <p id="legal-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('legal')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Music</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('music')">-</button>
+                    <p id="music-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('music')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Science</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('science')">-</button>
+                    <p id="science-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('science')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Athleticism</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('athleticism')">-</button>
+                    <p id="athleticism-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('athleticism')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Creativity</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('creativity')">-</button>
+                    <p id="creativity-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('creativity')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Discipline</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('discipline')">-</button>
+                    <p id="discipline-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('discipline')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Persistence</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('persistence')">-</button>
+                    <p id="persistence-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('persistence')">+</button>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Social Ability</p>
+                    </div>
+                    <button class="plus-minus-button" onclick="subtractStat('social')">-</button>
+                    <p id="social-label" class="chosen-stat-label-text">5</p>
+                    <button class="plus-minus-button" onclick="addStat('social')">+</button>
+                </div>
+                <button onclick="saveCurrentOutlier('/outlierReport.html')">Next</button>
+            </div>
+        </div>
+    </body>
+</html>
