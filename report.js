@@ -178,7 +178,7 @@ function startUpReport(){
     document.getElementById("luck-b").textContent = `${outlier.randomStats.get("luck")}`;
     document.getElementById("birth-year-b").textContent = `${outlier.birthYear.year}`;
     document.getElementById("birth-year-blurb").innerHTML = `${outlier.birthYear.blurb}`;
-    document.getElementById("birth-month-b").textContent = `${outlier.randomStats.get("month")}`;
+    document.getElementById("birth-month-b").textContent = `${months[outlier.randomStats.get("month")]}`;
     document.getElementById("technology-b").textContent = `${outlier.chosenStats.get("technology")}`;
     document.getElementById("industry-b").textContent = `${outlier.chosenStats.get("industry")}`;
     document.getElementById("legal-b").textContent = `${outlier.chosenStats.get("legal")}`;
