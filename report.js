@@ -52,21 +52,6 @@ function calculateSuccessScore() {
     }
     const athleticScore = athleticism * athleticMultiplier;
 
-
-    // -------------------------
-    // 5. Final score
-    // -------------------------
-
-    /*
-        Field-specific ability is the largest component.
-
-        This represents:
-            ability + historical opportunity
-
-        Circumstances then determine how much of that
-        ability can actually be converted into success.
-    */
-
     const fieldComponent = bestFieldScore / 20;
     const circumstanceComponent = circumstances;
     const personalComponent = personalAbility / 5;
