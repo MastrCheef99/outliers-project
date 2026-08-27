@@ -4,7 +4,30 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Outliers Project</title>
         <link rel="stylesheet" href="style.css" />
+        <style>
+            #outlier-report-text {
+                max-width: 100%;
+            }
+
+            #outlier-report-text p {
+                width: 50%;
+                margin: 0 auto 1.25rem;
+                text-align: center;
+            }
+
+            #outlier-report-text h1,
+            #outlier-report-text h2,
+            #outlier-report-text h3 {
+                text-align: center;
+            }
+
+            #outlier-report-text hr {
+                max-width: 50%;
+                margin: 1rem auto;
+            }
+        </style>
         <script src="index.js"></script>
         <script src="report.js"></script>
         <script>
@@ -27,18 +50,18 @@
                 <a href="/">Create an Outlier</a>
             </div>
             <div class="link-box">
-                <a href="/historicalOutliers.html">Historical Outliers</a>
+                <a href="/historicalOutlierSelection.html">Historical Outliers</a>
             </div>
         </nav>
-        <div>
+        <div id="outlier-report-text">
             <h1>Outlier Report</h1>
             <p>Your Outlier's success score is <b id="success-score-p"></b>.</p>
-            <p>Success score analyzes your Outlier's chance of succeeding given how their life is set up.<br>It is not a guarantee of success or failure, and is merely a statistical estimate based on principles outlined in <i>Outliers</i></p>
+            <p>Success score analyzes your Outlier's chance of succeeding given how their life is set up. It is not a guarantee of success or failure, and is merely a statistical estimate based on principles outlined in <i>Outliers</i>.</p>
             <p>Your outlier fits into the <b id="class-b"></b> class.</p>
             <p id="class-blurb"></p>
             <hr/>
             <h2>Breakdown</h2>
-            <p>The elements of success were broadly split into 3 categories: background circumstances of one's life, circumstances<br> related to one's field of work, and personal skills and traits.</p>
+            <p>The elements of success were broadly split into 3 categories: background circumstances of one's life, circumstances related to one's field of work, and personal skills and traits.</p>
             <h3>Background Circumstances</h3>
             <p>The background circumstances of your outlier's life have a large effect on their future success.<br>These statistics all come from random chance of how one is born and randomly receive opportunities. The statistics can be 1-20, simulating a d20 die roll. These include:<br>
             Family Class: <b id="family-class-b"></b><br>
@@ -49,7 +72,7 @@
             Luck: <b id="luck-b"></b><br>
             Total Circumstance Score: <b id="circumstance-score-b"></b>
             </p>
-            <p style="text-align: left; margin-left: 20px; margin-right: 20px;">
+            <p>
             Each is explained below with how it relates to success according to Gladwell and my own analysis:<br>
             The class of one's family matters because higher-class parents are more likely to raise their children in an environment that is conducive to learning and creating opportunities. (Per Chapter 4.3)<br>
             Access to technology allows for broader learning and more opportunities in technologically dominated jobs.<br>
@@ -72,7 +95,7 @@
             Social Skills: <b id="social-b"></b><br>
             Total Personal Skill Score: <b id="personal-score-b"></b>
             </p>
-            <p style="text-align: left; margin-left: 20px; margin-right: 20px;">
+            <p>
             These 4 factors are just generally useful for someone trying to become successful. Creativity is applicable
             across many fields, discipline is required in order to put in the hard work required to become successful
             persistence is required so one keeps working at something so they can become successful in it, and social
@@ -89,22 +112,15 @@
             Science: <b id="science-b"></b><br>
             Field Score for your class: <b id="field-score-b"></b>
             </p>
-            <p style="text-align: left; margin-left: 20px; margin-right: 20px;">
+            <p>
             In order to become successful, past outliers have taken advantage of the time they exist in. Bill Gates and Bill Joy took advantage of the technological revolution. They were already skilled in programming, so they were able to contribute to the wave of changes and become successful (per Chapter 2). The Beatles took advantage of the music scene, including one that favored artists in the "British Invasion". Thus, the success score calculation took the field your Outlier had time invested in and which fields were doing well during their time into heavy account to determine how well your outlier would do given their field.
             </p>
             <h3>The Athlete Calculus: Birth and Skill</h3>
-            <p>
-                Birth Month: <b id="birth-month-b"></b><br>
-                Athleticism: <b id="athleticism-b"></b><br>
-            </p>
-            <p style="text-align: left; margin-left: 20px; margin-right: 20px;">
-            In Chapter 1 of Outliers, Gladwell discusses how birth months, specifically being born right after the cutoff for a league in a certain sport, could lead to advantages or disadvantages in sports. For athlete outliers, the success score takes into account whether they are born near the common cutoff months of January and August and gives them an extra score if they are.
-            </p>
+            <p>Birth Month: <b id="birth-month-b"></b>&emsp; Athleticism: <b id="athleticism-b"></b>.</p>
+            <p>In Chapter 1 of Outliers, Gladwell discusses how birth months, specifically being born right after the cutoff for a league in a certain sport, could lead to advantages or disadvantages in sports. For athlete outliers, the success score takes into account whether they are born near the common cutoff months of January and August and gives them an extra score if they are.</p>
             <h3>Conclusion</h3>
-            <p>Overall, the past simulation and the final success score provide an abstracted view of how success comes about. Vast concepts are reduced to mere numbers, but in totality this game<br> serves as a useful tool for explaining key concepts in Outliers by Malcolm Gladwell.</p>
-        </div>
-        <div class="page">
-        <button onclick="resetReport()">Restart</button>
+            <p>Overall, the past simulation and the final success score provide an abstracted view of how success comes about. Vast concepts are reduced to mere numbers, but in totality this game serves as a useful tool for explaining key concepts in Outliers by Malcolm Gladwell.</p>
+            <button style="margin-bottom: 40px;" onclick="resetReport()">Restart</button>
         </div>
     </body>
 </html>

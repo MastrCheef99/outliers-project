@@ -80,7 +80,7 @@ async function rollBirthYear(){
 async function rollStats(stat, roll = -1){
     if (!statsRolling.includes(stat) && roll == -1){
         statsRolling.push(stat);
-        let statRoll = Math.floor(Math.random() * 14) + 6;
+        let statRoll = Math.floor(Math.random() * 17) + 3;
         await rollDieAnimation(stat);
         document.getElementById("bar-fill-" + stat).style.width = ((statRoll/20)*100) + "%";
         outlier.randomStats.set(stat, statRoll);
@@ -119,6 +119,33 @@ function saveCurrentOutlier(redirect = null){
         }
     }
 }
+
+function saveHistoricalOutlier(historicalOutlier, redirect = null) {
+    const dataToStore = {
+        image: historicalOutlier.image,
+        blurb: historicalOutlier.blurb,
+        name: historicalOutlier.name,
+        outlier: {
+            ...historicalOutlier.outlier,
+            randomStats: [...historicalOutlier.outlier.randomStats],
+            chosenStats: [...historicalOutlier.outlier.chosenStats]
+        }
+    };
+    sessionStorage.setItem("historicalOutlier", JSON.stringify(dataToStore));
+    if (redirect != null) window.location.assign(redirect);
+}
+
+function loadHistoricalOutlier() {
+    const data = JSON.parse(sessionStorage.getItem("historicalOutlier"));
+    if (!data){
+        window.alert("No valid historical outlier found! Hit OK to redirect to the selection.");
+        window.location.replace("/");
+    }
+    data.outlier.randomStats = new Map(data.outlier.randomStats);
+    data.outlier.chosenStats = new Map(data.outlier.chosenStats);
+    return data;
+}
+
 
 function readOutlierFromSessionStorage(){
     let storedData = JSON.parse(sessionStorage.getItem("outlier"));
@@ -175,3 +202,11 @@ function loadRollsFromSavedOutlier(){
     });
 }
 
+function loadChosenFromSavedOutlier(){
+    outlier.chosenStats.keys().forEach(stat => {
+        const statLabel = document.getElementById(`${stat}-label`);
+        if (statLabel) {
+            statLabel.textContent = outlier.chosenStats.get(stat);
+        }
+    });
+}

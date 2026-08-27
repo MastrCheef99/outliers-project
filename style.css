@@ -13,6 +13,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
+    margin-bottom: 40px;
 }
 
 .page {
@@ -21,6 +22,25 @@ body {
     gap: 20px;
     width: 90%;
     max-width: 1000px;
+    /* margin-bottom: 40px; */
+}
+
+#historical-outlier-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.historical-outlier-panel {
+    display: flex;
+    background-color: rgb(100, 100, 100);
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
 }
 
 .silhouette-panel {
@@ -109,6 +129,44 @@ body {
     width: 42px;
     height: 42px;
     object-fit: contain;
+}
+
+#historical-outlier-blurb {
+    display: flex;
+    max-width: 70%;
+    margin-inline: auto;
+    text-align: center;
+}
+
+#historical-outlier-info #outlier-report-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#historical-chosen-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    width: 70%;
+    margin-bottom: 40px;
+}
+
+.stat-row-special {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.stat-row-special .bar-label {
+    width: auto;
+    height: 50px;
+    flex: 1;
+}
+
+.stat-row-special .chosen-stat-label-text {
+    min-width: 24px;
 }
 
 nav, .rulediv {

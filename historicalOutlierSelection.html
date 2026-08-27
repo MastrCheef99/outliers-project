@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Outliers Project</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="index.js"></script>
+        <script src="historicalOutlierSelection.js"></script>
+        <script src="historicalOutlierObject.js"></script>
+        <script>
+            window.addEventListener("DOMContentLoaded", () => {
+                startupHistoricalOutlierSelection();
+            });
+        </script>
+    </head>
+    <body>
+        <nav>
+            <div class="link-box">
+                <a href="/">Create an Outlier</a>
+            </div>
+            <div class="link-box">
+                <a href="/historicalOutlierSelection.html">Historical Outliers</a>
+            </div>
+        </nav>
+        <div id="historical-outlier-list"></div>
+    </body>
+</html>

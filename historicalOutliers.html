@@ -4,12 +4,188 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Outliers Project</title>
         <link rel="stylesheet" href="style.css" />
         <script src="index.js"></script>
+        <script src="report.js"></script>
+        <script>
+            window.addEventListener("DOMContentLoaded", () => {
+                let historicalOutlier = loadHistoricalOutlier()
+                outlier=historicalOutlier.outlier;
+                loadRollsFromSavedOutlier();
+                loadChosenFromSavedOutlier();
+                document.getElementById("historical-figure-img").setAttribute("src", historicalOutlier.image);
+                document.getElementById("historical-outlier-name").textContent = historicalOutlier.name;
+                document.getElementById("historical-outlier-blurb").textContent = historicalOutlier.blurb;
+                var results = calculateSuccessScore(outlier);
+                document.getElementById("success-score-p").textContent = `${results.score}`;
+                var classResults = calculateClass(results)
+            });
+        </script>
         <link rel="preload" href="assets/die-rolling.gif" as="image">
     </head>
     <body>
-        <p>WIP</p>
-        <p><a href="/">Go Back</a></p>
+        <nav>
+            <div class="link-box">
+                <a href="/">Create an Outlier</a>
+            </div>
+            <div class="link-box">
+                <a href="/historicalOutlierSelection.html">Historical Outliers</a>
+            </div>
+        </nav>
+        <div id="historical-outlier-info">
+            <h1 id="historical-outlier-name"></h1>
+            <p id="historical-outlier-blurb"></p>
+            <p>His success score is <b id="success-score-p"></b></p>
+        </div>
+        <div class="page">
+            <div class="silhouette-panel">
+                <img class="silhouette" id="historical-figure-img" src="assets/silhouette.jpg" alt="Image of your historical figure" />
+            </div>
+
+            <div class="controls-panel">
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Birth Month</p>
+                    </div>
+                    <div class="text-bar">
+                        <p id="month-label" class="bar-label-text"></p>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Birth ERA</p>
+                    </div>
+                    <div class="text-bar">
+                        <p id="year-label" class="bar-label-text"></p>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Family Class</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-family-class"></div>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Technological Access</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-tech-access"></div>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Cultural Background</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-cultural-background"></div>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Education</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-education"></div>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">IQ</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-iq"></div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="bar-label">
+                        <p class="bar-label-text">Luck</p>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" id="bar-fill-luck"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="historical-chosen-stats">
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Technology</p>
+                </div>
+                <p id="technology-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Industry</p>
+                </div>
+                <p id="industry-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Legal</p>
+                </div>
+                <p id="legal-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Music</p>
+                </div>
+                <p id="music-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Science</p>
+                </div>
+                <p id="science-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Athleticism</p>
+                </div>
+                <p id="athleticism-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Creativity</p>
+                </div>
+                <p id="creativity-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Discipline</p>
+                </div>
+                <p id="discipline-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Persistence</p>
+                </div>
+                <p id="persistence-label" class="chosen-stat-label-text">5</p>
+            </div>
+
+            <div class="stat-row-special">
+                <div class="bar-label">
+                    <p class="bar-label-text">Social Ability</p>
+                </div>
+                <p id="social-label" class="chosen-stat-label-text">5</p>
+            </div>
+        </div>
     </body>
 </html>

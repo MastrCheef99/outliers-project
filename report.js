@@ -3,21 +3,21 @@ window.addEventListener('DOMContentLoaded', () => {
     loaded = true;
 });
 
-function calculateSuccessScore(outlier) {
+function calculateSuccessScore() {
     const fields = ["technology", "industry", "legal", "music", "science"];
 
     let bestFieldScore = 0;
     let bestField = null;
     const fieldMultiplier = {
-        1: 0.15,
-        2: 0.40,
+        1: 0.50,
+        2: 0.85,
         3: 1.00,
-        4: 1.60,
-        5: 2.20
+        4: 1.15,
+        5: 1.30
     };
     for (const field of fields) {
         let skill = outlier.chosenStats.get(field);
-        if (skill > 20) skill = 20 + Math.floor((skill-20)*0.1)
+        if (skill > 12) skill = 12 + Math.floor((skill-12)*0.1)
         const historicalMultiplier = fieldMultiplier[outlier.birthYear.fieldBuffs[field]];
         const fieldScore = skill * historicalMultiplier;
         if (fieldScore > bestFieldScore) {
@@ -69,9 +69,9 @@ function calculateSuccessScore(outlier) {
 
     const fieldComponent = bestFieldScore / 20;
     const circumstanceComponent = circumstances;
-    const personalComponent = personalAbility / 10;
+    const personalComponent = personalAbility / 5;
 
-    let score = (fieldComponent * 0.70)+ (circumstanceComponent * 0.25)+ (personalComponent * 0.05);
+    let score = (fieldComponent * 0.50)+ (circumstanceComponent * 0.25)+ (personalComponent * 0.25);
 
     if (athleticism > 0) {
         const athleticEffect =
@@ -80,6 +80,14 @@ function calculateSuccessScore(outlier) {
         score += athleticEffect * 0.10;
     }
     score *= 100;
+
+    if (score >= 70) {
+        score = 70 + (score - 70) * 1.3;
+    } else {
+        score = score * 0.75;
+    }
+
+    score = Math.min(100, Math.round(score));
 
     return {
         score: Math.min(100, Math.round(score)),
