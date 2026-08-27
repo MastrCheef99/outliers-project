@@ -71,7 +71,7 @@ function calculateSuccessScore() {
     const circumstanceComponent = circumstances;
     const personalComponent = personalAbility / 5;
 
-    let score = (fieldComponent * 0.50)+ (circumstanceComponent * 0.25)+ (personalComponent * 0.25);
+    let score = (fieldComponent * 0.45)+ (circumstanceComponent * 0.35)+ (personalComponent * 0.2);
 
     if (athleticism > 0) {
         const athleticEffect =
